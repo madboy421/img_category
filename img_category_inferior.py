@@ -77,12 +77,12 @@ def create_dataset():
     # X_train = torch.cat([X_train[1:2],X_train[2:]], dim=0)
     # print(X_train,X_train.shape)
     # method2
-    batch_data = unpickle('../data/cifar-10-python/cifar-10-batches-py/data_batch_1')
+    batch_data = unpickle('./data/cifar-10-python/cifar-10-batches-py/data_batch_1')
     # 注意：键名是字节字符串（byte strings）
     X_train = torch.Tensor(batch_data[b'data']).reshape(-1,3,32,32)     # 形状为(10000, 3072)的numpy数组
     y_train = torch.tensor(batch_data[b'labels'], dtype=torch.int64)    # 包含10000个标签的列表
     for i in torch.arange(1,5,dtype=torch.uint8):
-        batch_data = unpickle(f'../data/cifar-10-python/cifar-10-batches-py/data_batch_{i+1}')
+        batch_data = unpickle(f'./data/cifar-10-python/cifar-10-batches-py/data_batch_{i+1}')
         # 获取图像数据和标签
         # 注意：键名是字节字符串（byte strings）
         img = torch.Tensor(batch_data[b'data']).reshape(-1,3,32,32)

@@ -20,12 +20,12 @@ def create_dataset():
         return dict
 
     # 1.1 加载训练集
-    batch_data = unpickle('../data/cifar-10-python/cifar-10-batches-py/data_batch_1')
+    batch_data = unpickle('./data/cifar-10-python/cifar-10-batches-py/data_batch_1')
     X_train = torch.Tensor(batch_data[b'data']).reshape(-1, 3, 32, 32)
     y_train = torch.tensor(batch_data[b'labels'], dtype=torch.int64)
 
     for i in range(1, 5):
-        batch_data = unpickle(f'../data/cifar-10-python/cifar-10-batches-py/data_batch_{i + 1}')
+        batch_data = unpickle(f'./data/cifar-10-python/cifar-10-batches-py/data_batch_{i + 1}')
         img = torch.Tensor(batch_data[b'data']).reshape(-1, 3, 32, 32)
         labels = torch.tensor(batch_data[b'labels'], dtype=torch.int64)
         X_train = torch.cat((X_train, img), dim=0)
